@@ -1,6 +1,7 @@
 /* PIN CONFIG */
 int buttonPin = 2;    // The pin for the button
 int ledPin = 5;   // The pin for the light
+int speakerPin = 8;  // Optional
 
 /* RUN CONFIG */
 const int runTimes = 3;   // How many times the loop should run -1
@@ -28,7 +29,7 @@ void setup() {
   digitalWrite(ledPin, HIGH);
   delay(500);
   digitalWrite(ledPin, LOW);
-  tone(8, 1500, 20);
+  tone(speakerPin, 1500, 20);
 }
 
 // Do a barrleroll
@@ -62,7 +63,7 @@ void Start(int randInt) {
   while (digitalRead(buttonPin)) {
     delay(5); //Debounce
     if ((timeout + 5000) < millis()) {
-      tone(8, 200, 200);
+      tone(speakerPin, 200, 200);
       Serial.println(F("Subject is dead"));
       runs = runTimes + 1; // IT'S OVER!
       Serial.println(F(" ** End ** "));
